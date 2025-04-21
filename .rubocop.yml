@@ -44,7 +44,6 @@ Rails:
   Enabled: true
 
 require:
-  - rubocop-performance
   - rubocop-rails
 
 Style/AsciiComments:
