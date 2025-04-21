@@ -1,5 +1,7 @@
 # README
 
+![Tests](https://github.com/Jeurei/rails-project-64/actions/workflows/lint.yml/badge.svg) [![Actions Status](https://github.com/Jeurei/rails-project-64/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Jeurei/rails-project-64/actions)
+
 [link](https://rails-project-64-s6ho.onrender.com)
 
 This README would normally document whatever steps are necessary to get the
