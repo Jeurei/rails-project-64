@@ -1,0 +1,9 @@
+exclude:
+  - "exclude/files/in/this/directory/from/all/linters/**/*.slim"
+
+linters:
+  LineLength:
+    max: 100
+
+  RedundantDiv:
+    enabled: false
