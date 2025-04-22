@@ -4,11 +4,11 @@ h2 Регистрация
   = render "devise/shared/error_messages", resource: resource
 
   .form-inputs.row.gap-2
-    = render 'shared/inputs/email_input', f: f, autofocus: true
-    = render 'shared/inputs/password_input', f: f, hint: "(минимум #{@minimum_password_length} символов)" if @minimum_password_length
-    = render 'shared/inputs/password_input', f: f, field: :password_confirmation, label: "Подтверждение пароля"
+    = render "shared/inputs/email_input", f: f, autofocus: true
+    = render "shared/inputs/password_input", f: f, hint: "(минимум #{@minimum_password_length} символов)" if @minimum_password_length
+    = render "shared/inputs/password_input", f: f, field: :password_confirmation, label: "Подтверждение пароля"
 
   .actions.my-2
-    = render 'shared/inputs/submit', f: f, text: "Зарегистрироваться"
+    = render "shared/inputs/submit", f: f, text: "Зарегистрироваться"
 
 = render "devise/shared/links"

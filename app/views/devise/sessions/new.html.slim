@@ -2,11 +2,11 @@ h2 Войти
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
-    = render 'shared/inputs/email_input', f: f, autofocus: true
-    = render 'shared/inputs/password_input', f: f
+    = render "shared/inputs/email_input", f: f, autofocus: true
+    = render "shared/inputs/password_input", f: f
     - if devise_mapping.rememberable?
-      = render 'shared/inputs/checkbox', f: f, field: :remember_me
+      = render "shared/inputs/checkbox", f: f, field: :remember_me
     .actions
-      = render 'shared/inputs/submit', f: f, text: "Логин"
+      = render "shared/inputs/submit", f: f, text: "Логин"
 
 = render "devise/shared/links"
