@@ -3,7 +3,7 @@ exclude:
 
 linters:
   LineLength:
-    max: 140
+    max: 180
 
   RedundantDiv:
     enabled: false
