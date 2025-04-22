@@ -353,6 +353,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
+  slim
   slim_lint
   sprockets-rails
   sqlite3 (>= 1.4)
