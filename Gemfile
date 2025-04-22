@@ -21,6 +21,7 @@ gem "cssbundling-rails"
 gem "slim"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'simple_form'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -71,3 +72,5 @@ group :production do
 end
 
 gem "devise", "~> 4.9"
+
+gem "rubocop-slim", "~> 0.3.0"

@@ -45,6 +45,7 @@ Rails:
 
 plugins:
   - rubocop-rails
+  - rubocop-slim
 
 Style/AsciiComments:
   Enabled: false
