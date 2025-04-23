@@ -1,0 +1,10 @@
+- content_for :title, "New post"
+
+h1 New post
+
+= render "form", post: @post
+
+br
+
+div
+  = link_to "На главную", posts_path

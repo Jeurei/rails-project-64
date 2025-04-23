@@ -4,7 +4,11 @@ h2 Регистрация
   = render "devise/shared/error_messages", resource: resource
 
   .form-inputs.row.gap-2
-    = render "shared/inputs/email_input", f: f, autofocus: true
+    = render "shared/inputs/text_input",
+              f: f,
+              field_name: :email,
+              autocomplete: "email",
+              autofocus: true
     = render "shared/inputs/password_input", f: f, hint: "(минимум #{@minimum_password_length} символов)" if @minimum_password_length
     = render "shared/inputs/password_input", f: f, field: :password_confirmation, label: "Подтверждение пароля"
 

@@ -1,4 +1,4 @@
 h1 = "Коллективный блог"
 
-- 2.times do
-  = render partial: "main/post"
+- @posts.each do |post|
+  = render partial: "main/post", locals: { post: post }
