@@ -2,7 +2,7 @@ header
   nav.d-flex.flex-wrap.align-items-center.py-2.border-bottom.justify-content-between
     div.navbar.navbar-expand-md.navbar-light
       = link_to root_path, { class: "navbar-brand me-md-4" }
-          img src = "/assets/logo.jpg" alt="Logo" width="30"
+        = image_tag 'logo.jpg', alt: 'Logo', width: 30
     - if user_signed_in?
        .d-flex.align-items-center.gap-2
           span.text-secondary
