@@ -49,6 +49,7 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
   gem "rubocop-rails", require: false
+  gem "rails-controller-testing"
   gem "minitest-power_assert"
   gem "slim_lint"
   gem "faker"

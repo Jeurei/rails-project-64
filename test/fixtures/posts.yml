@@ -4,8 +4,19 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  title: First Post
+  body: This is the first post
+  category: one
+  creator: one
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 # column: value
 #
-two: {}
-# column: value
+two:
+  title: Second Post
+  body: This is the second post
+  category: two
+  creator: two
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
