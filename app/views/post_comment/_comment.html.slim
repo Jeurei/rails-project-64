@@ -1,0 +1,25 @@
+.card.rounded.mt-2 id="comment-#{comment.id}"
+    .card-header.d-flex.align-items-center.gap-2
+      = link_to "#comment-#{comment.id}" do
+        ="#"
+      span
+        = comment.user.email
+      span.fs-6.text-muted
+        = comment.created_at.strftime("%d %b %Y %H:%M")
+    .card-body
+      .card-text = comment.content
+    - if user_signed_in?
+      .card-footer
+        = link_to "Ответить", "#reply-form-#{comment.id}", class: "fs-6 text-decoration-underline text-lowercase",
+          data: { bs_toggle: "collapse" }, aria: { expanded: "false", controls: "reply-form-#{comment.id}" }
+        .collapse.ms-2 id="reply-form-#{comment.id}"
+          = form_with(model: PostComment.new, url: post_comments_path(comment.post), local: true) do |form|
+            = form.hidden_field :parent_id, value: comment.id
+            .form-group
+              = form.text_area :content, class: "form-control mt-2", rows: 3, placeholder: "Напишите ваш ответ..."
+            = form.submit "Оставить комментарий", class: "btn btn-primary mt-2"
+
+    - if comment.children.any?
+      .ms-4.mt-2
+        - comment.children.each do |child_comment|
+          = render "post_comment/comment", comment: child_comment

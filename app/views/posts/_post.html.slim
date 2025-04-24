@@ -1,4 +1,6 @@
 div id=dom_id(post)
-  div class="post-header"
-    h2 = post.title
+  div class="post-header mb-4"
+    h2.mb-lg-5 = post.title
     p = post.body
+    div.d-flex.justify-content-between.mt-5
+      span = post.creator.email

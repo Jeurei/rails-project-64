@@ -1,0 +1,9 @@
+= simple_form_for comment, url: post_comments_path(post) do |f|
+  = f.error_notification
+
+  .row.gap-4
+    .form-inputs
+      = render "shared/inputs/text_input", f: f, as: :text,  field_name: :content, label: false, autocomplete: "content", autofocus: true
+
+    .form-actions
+      = render "shared/inputs/submit", f: f, text: "Оставить комментарий"

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show update ]
   before_action :set_categories, only: %i[ new ]
+  before_action :set_comments, only: %i[ show ]
 
   # GET /posts or /posts.json
   def index
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @comment = @post.comments.build
   end
 
   # GET /posts/new
@@ -46,6 +48,10 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_comments
+      @comments = Post.find(params[:id]).comments
+    end
+
     def set_post
       @post = Post.find(params[:id])
     end
