@@ -20,8 +20,8 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     assert { PostComment.last.content == "This is a test comment" }
     assert { PostComment.last.user == @user }
     assert { PostComment.last.post == @post }
-    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == "/" }  # Root comment
-    assert_redirected_to post_path(@post)
+    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == "/" } 
+    assert_redirected_to post_path(@post, locale: I18n.locale)
     assert_not_nil flash[:notice]
   end
 
@@ -37,12 +37,11 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
 
     new_comment = PostComment.last
     assert { new_comment.parent == @parent_comment }
-    # Verify ancestry is correctly set - it should include the parent's ID
     parent_id = ActiveRecord::FixtureSet.identify(:with_comments)
     expected_ancestry = "/#{parent_id}/"
     assert { new_comment.ancestry == expected_ancestry || new_comment.ancestry == "#{parent_id}" }
 
-    assert_redirected_to post_path(@post)
+    assert_redirected_to post_path(@post, locale: I18n.locale)
   end
 
   test "should create a deeply nested comment" do
@@ -60,12 +59,11 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     new_comment = PostComment.last
     assert { new_comment.parent == nested_comment }
 
-    # Verify the ancestry chain is maintained
     parent_id = ActiveRecord::FixtureSet.identify(:with_comments)
     nested_id = ActiveRecord::FixtureSet.identify(:nested)
     expected_pattern = /#{parent_id}.*#{nested_id}/
 
     assert { new_comment.ancestry.match?(expected_pattern) }
-    assert_redirected_to post_path(@post)
+    assert_redirected_to post_path(@post, locale: I18n.locale)
   end
 end
