@@ -13,7 +13,7 @@ class PostCommentsController < ApplicationController
         format.html { redirect_to @post, notice: t(".success") }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_to @post, alert: @post_comment.errors.full_messages.join(", ") }
+        format.html { redirect_to @post, notice: @post_comment.errors.full_messages.join(", ") }
         format.json { render json: @post_comment.errors, status: :unprocessable_entity }
       end
     end

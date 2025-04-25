@@ -4,3 +4,13 @@ div id=dom_id(post)
     p = post.body
     div.d-flex.justify-content-between.mt-5
       span = post.creator.email
+      .d-flex.gap-2.align-items-center
+        span = "#{post.post_likes.count}"
+        - if current_user
+          - like = post.post_likes.find_by(user: current_user)
+          - if like
+            = link_to post_like_path(post, like), data: { turbo_method: :delete }, class: 'link-dark', title: 'Unlike' do
+              i.bi.bi-hand-thumbs-up-fill
+          - else
+            = link_to post_likes_path(post), data: { turbo_method: :post}, class: 'link-dark', title: 'Like' do
+              i.bi.bi-hand-thumbs-up
