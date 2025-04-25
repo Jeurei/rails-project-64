@@ -31,7 +31,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     assert_equal @user, PostLike.last.user
     assert_equal @post, PostLike.last.post
     assert_redirected_to @post
-    assert_equal 'Post was successfully liked.', flash[:notice]
+    assert_equal "Post was successfully liked.", flash[:notice]
   end
 
   test "should create like with JSON response" do
@@ -56,7 +56,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to @post
-    assert_equal 'Like was successfully removed.', flash[:notice]
+    assert_equal "Like was successfully removed.", flash[:notice]
   end
 
   test "should destroy like with JSON response" do
@@ -93,7 +93,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     assert PostLike.exists?(like.id)
     assert_redirected_to @post
-    assert_equal 'You can only remove your own likes.', flash[:alert]
+    assert_equal "You can only remove your own likes.", flash[:alert]
   end
 
   test "should handle non-existent post" do
@@ -104,7 +104,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to root_path
-    assert_equal 'Post not found.', flash[:alert]
+    assert_equal "Post not found.", flash[:alert]
   end
 
   test "should handle non-existent post with JSON" do
@@ -112,6 +112,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     post post_likes_path(999, format: :json)
     assert_response :not_found
-    assert_equal 'Post not found', response.parsed_body["error"]
+    assert_equal "Post not found", response.parsed_body["error"]
   end
 end

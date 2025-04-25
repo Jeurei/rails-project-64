@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :posts, except: [ :edit, :destroy ] do
     resources :comments, only: [ :create ], controller: "post_comments"
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [ :create, :destroy ]
   end
   root to: "main#index"
   devise_for :users, controllers: { sessions: "users/sessions" }

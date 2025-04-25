@@ -36,3 +36,24 @@ en:
       success: "Post was successfully updated."
     destroy:
       success: "Post was successfully destroyed."
+    post:
+      like: "Like"
+      unlike: "Unlike"
+      likes_count: "%{count} likes"
+  likes:
+    create:
+      success: "Post was successfully liked."
+      error: "Unable to like the post."
+    destroy:
+      success: "Like was successfully removed."
+      error: "You can only remove your own likes."
+    not_found: "Post not found."
+  post_comments:
+    create:
+      success: "Comment was successfully created."
+      error: "Unable to create comment."
+  errors:
+    messages:
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
