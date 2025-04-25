@@ -30,6 +30,38 @@
 en:
   hello: "Hello world"
   posts:
+    index:
+      title: "Posts"
+      show_post: "Show this post"
+      new_post: "New post"
+    new:
+      title: "New post"
+      back_to_home: "Back to home"
+    show:
+      all_posts: "All posts"
+      comments: "Comments"
+    form:
+      create_post: "Create post"
+      title: "Title"
+      category: "Category"
+      body: "Content"
+      errors:
+        prohibited: "%{count} errors prohibited this post from being saved:"
+  post_comment:
+    form:
+      submit: "Leave a comment"
+      placeholder: "Write your comment..."
+    comment:
+      reply: "Reply"
+      reply_form:
+        submit: "Leave a comment"
+        placeholder: "Write your reply..."
+  main:
+    index:
+      title: "Collective blog"
+    post:
+      likes: "Liked by %{count}"
+  posts:
     create:
       success: "Post was successfully created."
     update:
@@ -57,3 +89,9 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  layout:
+    header:
+      new_post: "New post"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"

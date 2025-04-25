@@ -1,0 +1,66 @@
+ru:
+  hello: "Привет, мир"
+  posts:
+    index:
+      title: "Посты"
+      show_post: "Показать пост"
+      new_post: "Новый пост"
+    new:
+      title: "Новый пост"
+      back_to_home: "На главную"
+    show:
+      all_posts: "Все посты"
+      comments: "Комментарии"
+    form:
+      create_post: "Создать пост"
+      title: "Заголовок"
+      category: "Категория"
+      body: "Текст"
+      errors:
+        prohibited: "%{count} ошибок не позволяет сохранить пост:"
+    create:
+      success: "Пост успешно создан."
+    update:
+      success: "Пост успешно обновлен."
+    destroy:
+      success: "Пост успешно удален."
+    post:
+      like: "Нравится"
+      unlike: "Не нравится"
+      likes_count: "%{count} нравится"
+  likes:
+    create:
+      success: "Пост понравился."
+      error: "Не удалось поставить лайк."
+    destroy:
+      success: "Лайк успешно удален."
+      error: "Вы можете удалять только свои лайки."
+    not_found: "Пост не найден."
+  post_comment:
+    create:
+      success: "Комментарий успешно создан."
+      error: "Не удалось создать комментарий."
+    form:
+      submit: "Оставить комментарий"
+      placeholder: "Напишите ваш ответ..."
+    comment:
+      reply: "Ответить"
+      reply_form:
+        submit: "Оставить комментарий"
+        placeholder: "Напишите ваш ответ..."
+  errors:
+    messages:
+      not_saved:
+        one: "1 ошибка не позволяет сохранить %{resource}:"
+        other: "%{count} ошибок не позволяют сохранить %{resource}:"
+  layout:
+    header:
+      new_post: "Новый пост"
+      sign_in: "Войти"
+      sign_up: "Зарегистрироваться"
+      sign_out: "Выйти"
+  main:
+    index:
+      title: "Коллективный блог"
+    post:
+      likes: "Понравилось %{count}" 

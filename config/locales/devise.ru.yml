@@ -1,0 +1,28 @@
+ru:
+  devise:
+    sessions:
+      new:
+        sign_in: "Войти"
+        email: "Email"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+        submit: "Войти"
+    registrations:
+      new:
+        sign_up: "Регистрация"
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        password_length: "минимум %{count} символов"
+        submit: "Зарегистрироваться"
+    shared:
+      links:
+        sign_in: "Войти"
+        sign_up: "Зарегистрироваться"
+        forgot_password: "Забыли пароль?"
+        confirmation_instructions: "Не получили инструкции по подтверждению?"
+        unlock_instructions: "Не получили инструкции по разблокировке?"
+        didnt_receive_confirmation_instructions: "Не получили инструкции по подтверждению?"
+        didnt_receive_unlock_instructions: "Не получили инструкции по разблокировке?"
+        back_to: "Назад"
+        sign_in_with_provider: "Войти через %{provider}" 
