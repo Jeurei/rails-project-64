@@ -104,7 +104,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to root_path
-    assert_equal "Post not found.", flash[:alert]
+    assert_equal "Post not found", flash[:alert]
   end
 
   test "should handle non-existent post with JSON" do
