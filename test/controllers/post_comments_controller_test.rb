@@ -20,7 +20,7 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     assert { PostComment.last.content == "This is a test comment" }
     assert { PostComment.last.user == @user }
     assert { PostComment.last.post == @post }
-    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == "/" } 
+    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == "/" }
     assert_redirected_to post_path(@post, locale: I18n.locale)
     assert_not_nil flash[:notice]
   end
