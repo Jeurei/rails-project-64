@@ -65,38 +65,53 @@ Style/FrozenStringLiteralComment:
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: single_quotes
+
 Bundler/OrderedGems:
   Enabled: true
   TreatCommentsAsGroupSeparators: true
-Style/SpaceInsidePercentLiteralDelimiters:
+
+Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
+
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
   EnforcedStyle: no_space
   EnforcedStyleForEmptyBrackets: no_space
+
 Layout/IndentationWidth:
   Enabled: true
   Width: 2
+
 Layout/IndentationConsistency:
   Enabled: true
   EnforcedStyle: normal
+
 Layout/EmptyLinesAroundAccessModifier:
   EnforcedStyle: around
+
 Style/GlobalStdStream:
   Enabled: true
+
 Layout/MultilineMethodCallIndentation:
   Enabled: true
+
 Style/RedundantConstantBase:
   Enabled: true
+
 Style/SymbolArray:
   Enabled: true
+
 Layout/HashAlignment:
   Enabled: true
+
 Performance/TimesMap:
   Enabled: true
+
 Style/MultipleComparison:
   Enabled: true
+
 Style/NilComparison:
   EnforcedStyle: predicate
+
 Style/RedundantInterpolation:
   Enabled: true
