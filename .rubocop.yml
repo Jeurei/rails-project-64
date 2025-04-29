@@ -70,10 +70,6 @@ Bundler/OrderedGems:
   TreatCommentsAsGroupSeparators: true
 Style/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
-Layout/MultilineOperationIndentation:
-  Enabled: true
-  EnforcedStyle: indented
-  IndentationWidth: 2
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
   EnforcedStyle: no_space

@@ -5,22 +5,18 @@ class PostsController < ApplicationController
   before_action :set_categories, only: %i[new]
   before_action :set_comments, only: %i[show]
 
-  # GET /posts or /posts.json
   def index
     @posts = Post.all
   end
 
-  # GET /posts/1 or /posts/1.json
   def show
     @comment = @post.comments.build
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # POST /posts or /posts.json
   def create
     @post = current_user.posts.build(post_params)
 
@@ -35,7 +31,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -49,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_comments
     @comments = Post.find(params[:id]).comments
   end
@@ -62,7 +57,6 @@ class PostsController < ApplicationController
     @categories = Category.all
   end
 
-  # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:title, :body, :category_id)
   end
