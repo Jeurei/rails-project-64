@@ -67,7 +67,7 @@ Style/StringLiterals:
 Bundler/OrderedGems:
   Enabled: true
   TreatCommentsAsGroupSeparators: true
-Style/SpaceInsidePercentLiteralDelimiters:
+Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
 Layout/MultilineOperationIndentation:
   Enabled: true
