@@ -12,7 +12,7 @@ h2 = t(".sign_up")
               label: t(".email")
     = render "shared/inputs/password_input", 
               f: f, 
-              hint: t(".password_length", count: @minimum_password_length) if @minimum_password_length,
+              hint: (t(".password_length", count: @minimum_password_length) if @minimum_password_length),
               label: t(".password")
     = render "shared/inputs/password_input", 
               f: f, 
