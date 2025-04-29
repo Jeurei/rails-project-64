@@ -85,3 +85,33 @@ Layout/IndentationWidth:
 Layout/IndentationConsistency:
   Enabled: true
   EnforcedStyle: normal
+Layout/EmptyLinesAroundAccessModifier:
+  EnforcedStyle: around
+
+Style/GlobalStdStream:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/RedundantConstantBase:
+  Enabled: true
+
+Style/SymbolArray:
+  EnforcedStyle: percent
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+
+Performance/TimesMap:
+  Enabled: true
+
+Style/MultipleComparison:
+  Enabled: true
+
+Style/NilComparison:
+  EnforcedStyle: predicate
+
+Style/RedundantInterpolation:
+  Enabled: true

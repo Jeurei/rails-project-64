@@ -14,7 +14,7 @@ Post.delete_all
 Category.delete_all
 User.delete_all
 
-users = 5.times.map do
+users = Array.new(5) do
   User.create!(
     email: Faker::Internet.unique.email,
     password: 'password',
