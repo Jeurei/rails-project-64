@@ -32,7 +32,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to "#{post_url(Post.last)}?locale=en"
     assert_equal "Test Post", Post.last.title
     assert_equal @user, Post.last.creator
   end
@@ -50,7 +50,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         category_id: @category.id
       }
     }
-    assert_redirected_to post_url(@post)
+    assert_redirected_to "#{post_url(@post)}?locale=en"
     @post.reload
     assert_equal "Updated Title", @post.title
   end

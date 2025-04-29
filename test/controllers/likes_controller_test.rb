@@ -103,8 +103,8 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
       post post_likes_path(999)
     end
 
-    assert_redirected_to root_path
-    assert_equal "Post not found", flash[:alert]
+    assert_redirected_to "#{root_path}?locale=#{I18n.locale}"
+    assert_equal "Post not found.", flash[:alert]
   end
 
   test "should handle non-existent post with JSON" do
@@ -112,6 +112,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     post post_likes_path(999, format: :json)
     assert_response :not_found
-    assert_equal "Post not found", response.parsed_body["error"]
+    assert_equal "Post not found.", response.parsed_body["error"]
   end
 end
