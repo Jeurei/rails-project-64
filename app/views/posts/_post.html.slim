@@ -2,7 +2,7 @@ div id=dom_id(post)
   div class="post-header mb-4"
     h2.mb-lg-5 = post.title
     p = post.body
-    div.d-flex.justify-content-between.mt-5
+    .d-flex.justify-content-between.mt-5
       span = post.creator.email
       .d-flex.gap-2.align-items-center
         span = t('posts.post.likes_count', count: post.post_likes.count)
