@@ -1,9 +1,9 @@
+---
 exclude:
-  - "exclude/files/in/this/directory/from/all/linters/**/*.slim"
+  - vendor/*
+  - node_modules/*
+  - "**/devise/**/*.slim"
 
 linters:
   LineLength:
     max: 180
-
-  RedundantDiv:
-    enabled: false

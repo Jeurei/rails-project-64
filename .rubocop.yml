@@ -1,23 +1,33 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
-
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+---
+require:
+  - rubocop-rails
+  - rubocop-performance
 
 AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2.2
+  TargetRailsVersion: 7
   DisplayCopNames: true
   Exclude:
-    - "bin/**"
-    - "db/schema.rb"
-    - "db/migrate/**"
+    - "code/bin/**"
+    - "code/db/schema.rb"
+    - "code/db/migrate/**"
+    - "code/db/data_schema.rb"
+    - "code/vendor/**/*"
+    - "code/node_modules/**/*"
     - "vendor/**/*"
     - "node_modules/**/*"
-  NewCops: enable
-  TargetRailsVersion: 6
-  TargetRubyVersion: 3.2
+    - "code/tmp/**/*"
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
 
 Layout/LineLength:
   Enabled: false
@@ -25,80 +35,17 @@ Layout/LineLength:
 Metrics/AbcSize:
   Enabled: false
 
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
 Metrics/MethodLength:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Enabled: false
-
-Rails:
-  Enabled: true
-
-plugins:
-  - rubocop-rails
-
-Style/AsciiComments:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Style/IfUnlessModifier:
+Metrics/BlockLength:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Enabled: true
+Style/AsciiComments:
+  Enabled: false
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: single_quotes
-Bundler/OrderedGems:
-  Enabled: true
-  TreatCommentsAsGroupSeparators: true
-Layout/SpaceInsidePercentLiteralDelimiters:
-  Enabled: true
-Layout/MultilineOperationIndentation:
-  Enabled: true
-  EnforcedStyle: indented
-Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: true
-  EnforcedStyle: no_space
-  EnforcedStyleForEmptyBrackets: no_space
-Layout/IndentationWidth:
-  Enabled: true
-  Width: 2
-Layout/IndentationConsistency:
-  Enabled: true
-  EnforcedStyle: normal
-Layout/EmptyLinesAroundAccessModifier:
-  EnforcedStyle: around
-Style/GlobalStdStream:
-  Enabled: true
-Layout/MultilineMethodCallIndentation:
-  Enabled: true
-Style/RedundantConstantBase:
-  Enabled: true
-Style/SymbolArray:
-  Enabled: true
-Layout/HashAlignment:
-  Enabled: true
-Performance/TimesMap:
-  Enabled: true
-Style/MultipleComparison:
-  Enabled: true
-Style/NilComparison:
-  EnforcedStyle: predicate
-Style/RedundantInterpolation:
-  Enabled: true
+Metrics/ParameterLists:
+  Enabled: false
