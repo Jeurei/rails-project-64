@@ -10,13 +10,13 @@ h2 = t(".sign_up")
               autocomplete: "email",
               autofocus: true,
               label: t(".email")
-    = render "shared/inputs/password_input", 
-              f: f, 
+    = render "shared/inputs/password_input",
+              f: f,
               hint: (t(".password_length", count: @minimum_password_length) if @minimum_password_length),
               label: t(".password")
-    = render "shared/inputs/password_input", 
-              f: f, 
-              field: :password_confirmation, 
+    = render "shared/inputs/password_input",
+              f: f,
+              field: :password_confirmation,
               label: t(".password_confirmation")
 
   .actions.my-2
