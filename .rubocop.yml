@@ -40,13 +40,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Rails:
-  Enabled: true
-
-plugins:
-  - rubocop-rails
-  - rubocop-slim
-
 Style/AsciiComments:
   Enabled: false
 
@@ -115,3 +108,9 @@ Style/NilComparison:
 
 Style/RedundantInterpolation:
   Enabled: true
+
+Rails:
+  Enabled: true
+
+plugins:
+  - rubocop-rails
