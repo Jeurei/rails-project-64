@@ -267,10 +267,6 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
-    rubocop-slim (0.3.0)
-      lint_roller (>= 1.1)
-      rubocop (>= 1.72.1)
-      slimi (~> 0.7)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)
@@ -296,10 +292,6 @@ GEM
       rexml (~> 3.2)
       rubocop (>= 1.0, < 2.0)
       slim (>= 3.0, < 6.0)
-    slimi (0.7.6)
-      temple
-      thor
-      tilt
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -369,7 +361,6 @@ DEPENDENCIES
   rails-controller-testing
   rubocop-rails
   rubocop-rails-omakase
-  rubocop-slim (~> 0.3.0)
   selenium-webdriver
   sentry-rails
   sentry-ruby

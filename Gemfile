@@ -55,7 +55,6 @@ group :development, :test do
   gem 'minitest-power_assert'
   gem 'rails-controller-testing'
   gem 'rubocop-rails', require: false
-  gem 'rubocop-slim', '~> 0.3.0'
   gem 'slim_lint'
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
