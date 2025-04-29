@@ -1,13 +1,13 @@
 = simple_form_for post do |form|
   - if post.errors.any?
     div style="color: red"
-      h2 = t(".errors.prohibited", count: post.errors.count)
+      h2 = t('.errors.prohibited', count: post.errors.count)
       ul
         - post.errors.each do |error|
           li = error.full_message
   .form-group.row.gap-2.mb-2
-    = render "shared/inputs/text_input", f: form, field_name: :title, autocomplete: "title", autofocus: true, label: t(".title")
-    = form.association :category, collection: @categories, include_blank: true, input_html: { class: "form-control" }, label: t(".category")
-    = render "shared/inputs/text_input", f: form, field_name: :body, as: :text, autocomplete: "body", autofocus: true, label: t(".body")
+    = render 'shared/inputs/text_input', f: form, field_name: :title, autocomplete: 'title', autofocus: true, label: t('.title')
+    = form.association :category, collection: @categories, include_blank: true, input_html: { class: 'form-control' }, label: t('.category')
+    = render 'shared/inputs/text_input', f: form, field_name: :body, as: :text, autocomplete: 'body', autofocus: true, label: t('.body')
   .form-actions
-    = render "shared/inputs/submit", f: form, text: t(".create_post")
+    = render 'shared/inputs/submit', f: form, text: t('.create_post')

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PostCommentsController < ApplicationController
-  before_action :set_post, only: [ :create ]
+  before_action :set_post, only: [:create]
 
   def create
     @post_comment = current_user.comments.build(post_comment_params.merge(post: @post))
@@ -10,10 +12,10 @@ class PostCommentsController < ApplicationController
 
     respond_to do |format|
       if @post_comment.save!
-        format.html { redirect_to @post, notice: t(".create.success") }
+        format.html { redirect_to @post, notice: t('.create.success') }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_to @post, notice: @post_comment.errors.full_messages.join(", ") }
+        format.html { redirect_to @post, notice: @post_comment.errors.full_messages.join(', ') }
         format.json { render json: @post_comment.errors, status: :unprocessable_entity }
       end
     end

@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PostCommentsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -10,26 +12,26 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test "should create comment" do
-    assert_difference("PostComment.count") do
+  test 'should create comment' do
+    assert_difference('PostComment.count') do
       post post_comments_path(@post), params: {
-        post_comment: { content: "This is a test comment" }
+        post_comment: { content: 'This is a test comment' }
       }
     end
 
-    assert { PostComment.last.content == "This is a test comment" }
+    assert { PostComment.last.content == 'This is a test comment' }
     assert { PostComment.last.user == @user }
     assert { PostComment.last.post == @post }
-    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == "/" }
+    assert { PostComment.last.ancestry == nil || PostComment.last.ancestry == '/' }
     assert_redirected_to post_path(@post, locale: I18n.locale)
     assert_not_nil flash[:notice]
   end
 
-  test "should create nested comment" do
-    assert_difference("PostComment.count") do
+  test 'should create nested comment' do
+    assert_difference('PostComment.count') do
       post post_comments_path(@post), params: {
         post_comment: {
-          content: "This is a reply",
+          content: 'This is a reply',
           parent_id: @parent_comment.id
         }
       }
@@ -44,13 +46,13 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@post, locale: I18n.locale)
   end
 
-  test "should create a deeply nested comment" do
+  test 'should create a deeply nested comment' do
     nested_comment = post_comments(:nested)
 
-    assert_difference("PostComment.count") do
+    assert_difference('PostComment.count') do
       post post_comments_path(@post), params: {
         post_comment: {
-          content: "Reply to nested comment",
+          content: 'Reply to nested comment',
           parent_id: nested_comment.id
         }
       }

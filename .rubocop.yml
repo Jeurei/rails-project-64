@@ -58,3 +58,23 @@ Style/Documentation:
 
 Style/IfUnlessModifier:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+Bundler/OrderedGems:
+  Enabled: true
+  TreatCommentsAsGroupSeparators: true
+Style/SpaceInsidePercentLiteralDelimiters:
+  Enabled: true
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+  IndentationWidth: 2
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBrackets: no_space

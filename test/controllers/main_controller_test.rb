@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class MainControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
+  test 'should get index' do
     get root_url
     assert_response :success
     assert_not_nil assigns(:posts)
     assert_template :index
   end
 
-  test "should list all posts" do
+  test 'should list all posts' do
     post1 = posts(:one)
     post2 = posts(:two)
 

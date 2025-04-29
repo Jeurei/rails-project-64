@@ -1,17 +1,17 @@
-h2 = t(".sign_in")
+h2 = t('.sign_in')
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
-    = render "shared/inputs/text_input",
+    = render 'shared/inputs/text_input',
               f: f,
               field_name: :email,
-              autocomplete: "email",
+              autocomplete: 'email',
               autofocus: true,
-              label: t(".email")
-    = render "shared/inputs/password_input", f: f, label: t(".password")
+              label: t('.email')
+    = render 'shared/inputs/password_input', f: f, label: t('.password')
     - if devise_mapping.rememberable?
-      = render "shared/inputs/checkbox", f: f, field: :remember_me, label: t(".remember_me")
+      = render 'shared/inputs/checkbox', f: f, field: :remember_me, label: t('.remember_me')
     .actions
-      = render "shared/inputs/submit", f: f, text: t(".submit")
+      = render 'shared/inputs/submit', f: f, text: t('.submit')
 
-= render "devise/shared/links"
+= render 'devise/shared/links'

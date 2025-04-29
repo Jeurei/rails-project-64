@@ -2,14 +2,14 @@ p style="color: green" = notice
 
 ol.breadcrumb
   .breadcrumb-item
-    = link_to t(".all_posts"), root_path
+    = link_to t('.all_posts'), root_path
   .breadcrumb-item.active
     = @post.category.name
 
 = render @post
 
-span = t(".comments")
-= render "post_comment/form", post: @post, comment: @comment
+span = t('.comments')
+= render 'post_comment/form', post: @post, comment: @comment
 
-- @comments.where(ancestry: "/").find_each do |comment|
-  = render "post_comment/comment", comment: comment
+- @comments.where(ancestry: '/').find_each do |comment|
+  = render 'post_comment/comment', comment: comment

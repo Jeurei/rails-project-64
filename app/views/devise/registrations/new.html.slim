@@ -1,25 +1,25 @@
-h2 = t(".sign_up")
+h2 = t('.sign_up')
 
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
+  = render 'devise/shared/error_messages', resource: resource
 
   .form-inputs.row.gap-2
-    = render "shared/inputs/text_input",
+    = render 'shared/inputs/text_input',
               f: f,
               field_name: :email,
-              autocomplete: "email",
+              autocomplete: 'email',
               autofocus: true,
-              label: t(".email")
-    = render "shared/inputs/password_input",
+              label: t('.email')
+    = render 'shared/inputs/password_input',
               f: f,
-              hint: (t(".password_length", count: @minimum_password_length) if @minimum_password_length),
-              label: t(".password")
-    = render "shared/inputs/password_input",
+              hint: (t('.password_length', count: @minimum_password_length) if @minimum_password_length),
+              label: t('.password')
+    = render 'shared/inputs/password_input',
               f: f,
               field: :password_confirmation,
-              label: t(".password_confirmation")
+              label: t('.password_confirmation')
 
   .actions.my-2
-    = render "shared/inputs/submit", f: f, text: t(".submit")
+    = render 'shared/inputs/submit', f: f, text: t('.submit')
 
-= render "devise/shared/links"
+= render 'devise/shared/links'

@@ -3,14 +3,14 @@
 
   .row.gap-4
     .form-inputs
-      = render "shared/inputs/text_input",
+      = render 'shared/inputs/text_input',
                f: f,
                as: :text,
                field_name: :content,
                label: false,
-               autocomplete: "content",
+               autocomplete: 'content',
                autofocus: true,
-               placeholder: t(".placeholder")
+               placeholder: t('.placeholder')
 
     .form-actions
-      = render "shared/inputs/submit", f: f, text: t(".submit")
+      = render 'shared/inputs/submit', f: f, text: t('.submit')

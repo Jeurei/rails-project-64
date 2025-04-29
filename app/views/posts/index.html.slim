@@ -1,13 +1,13 @@
 p style="color: green" = notice
 
-- content_for :title, t(".title")
+- content_for :title, t('.title')
 
-h1 = t(".title")
+h1 = t('.title')
 
 #posts
   - @posts.each do |post|
     = render post
     p
-      = link_to t(".show_post"), post
+      = link_to t('.show_post'), post
 
-= link_to t(".new_post"), new_post_path
+= link_to t('.new_post'), new_post_path
