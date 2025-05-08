@@ -1,4 +1,18 @@
 ru:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "Пароль не может быть пустым"
+              too_short: "Пароль слишком короткий"
+            email:
+              blank: "Email не может быть пустым"
+              taken: "Такой Email уже зарегистрирован"
+              invalid: "Неверный формат Email"
+            password_confirmation:
+              confirmation: "Пароли не совпадают"
   hello: "Привет, мир"
   posts:
     index:
@@ -51,8 +65,14 @@ ru:
   errors:
     messages:
       not_saved:
-        one: "1 ошибка не позволяет сохранить %{resource}:"
-        other: "%{count} ошибок не позволяют сохранить %{resource}:"
+        one: "Проверьте введенные данные:"
+        other: "Проверьте введенные данные:"
+      blank: "не может быть пустым"
+      invalid: "имеет неверное значение"
+      confirmation: "не совпадает с подтверждением"
+      too_short: "слишком короткий (минимум %{count} символов)"
+      taken: "уже существует"
+      required: "обязательное поле"
   layout:
     header:
       new_post: "Новый пост"
@@ -63,4 +83,4 @@ ru:
     index:
       title: "Коллективный блог"
     post:
-      likes: "Понравилось %{count}" 
+      likes: "Понравилось %{count}"
