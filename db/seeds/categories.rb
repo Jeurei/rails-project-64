@@ -2,9 +2,9 @@
 
 module SeedData
   def self.create_categories
-    puts 'Создание категорий...'
-    
-    categories = %w[
+    Rails.logger.debug 'Создание категорий...'
+
+    %w[
       Технологии
       Спорт
       Наука
@@ -18,7 +18,5 @@ module SeedData
     ].map do |name|
       Category.create!(name: name)
     end
-    
-    categories
   end
 end

@@ -4,7 +4,7 @@ require 'faker'
 
 Faker::Config.locale = 'ru'
 
-puts 'Очистка базы данных...'
+Rails.logger.debug 'Очистка базы данных...'
 PostLike.destroy_all
 PostComment.destroy_all
 Post.destroy_all
@@ -20,12 +20,12 @@ require_relative 'seeds/post_likes'
 categories = SeedData.create_categories
 users = SeedData.create_users
 posts = SeedData.create_posts(categories, users)
-comments = SeedData.create_comments(users, posts)
+SeedData.create_comments(users, posts)
 SeedData.create_likes(users, posts)
 
-puts 'Создание данных завершено!'
-puts "Создано #{User.count} пользователей"
-puts "Создано #{Category.count} категорий"
-puts "Создано #{Post.count} постов"
-puts "Создано #{PostComment.count} комментариев"
-puts "Создано #{PostLike.count} лайков"
+Rails.logger.debug 'Создание данных завершено!'
+Rails.logger.debug { "Создано #{User.count} пользователей" }
+Rails.logger.debug { "Создано #{Category.count} категорий" }
+Rails.logger.debug { "Создано #{Post.count} постов" }
+Rails.logger.debug { "Создано #{PostComment.count} комментариев" }
+Rails.logger.debug { "Создано #{PostLike.count} лайков" }
