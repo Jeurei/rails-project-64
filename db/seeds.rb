@@ -1,36 +1,31 @@
 # frozen_string_literal: true
 
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
 
-Post.delete_all
-Category.delete_all
-User.delete_all
+Faker::Config.locale = 'ru'
 
-users = Array.new(5) do
-  User.create!(
-    email: Faker::Internet.unique.email,
-    password: 'password',
-    password_confirmation: 'password'
-  )
-end
+puts 'Очистка базы данных...'
+PostLike.destroy_all
+PostComment.destroy_all
+Post.destroy_all
+Category.destroy_all
+User.destroy_all
 
-categories = %w[Новости Бизнес Технологии Спорт Культура].map do |name|
-  Category.create!(name: name)
-end
+require_relative 'seeds/categories'
+require_relative 'seeds/users'
+require_relative 'seeds/posts'
+require_relative 'seeds/post_comments'
+require_relative 'seeds/post_likes'
 
-20.times do
-  Post.create!(
-    title: Faker::Book.title,
-    body: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
-    category: categories.sample,
-    creator: users.sample
-  )
-end
+categories = SeedData.create_categories
+users = SeedData.create_users
+posts = SeedData.create_posts(categories, users)
+comments = SeedData.create_comments(users, posts)
+SeedData.create_likes(users, posts)
+
+puts 'Создание данных завершено!'
+puts "Создано #{User.count} пользователей"
+puts "Создано #{Category.count} категорий"
+puts "Создано #{Post.count} постов"
+puts "Создано #{PostComment.count} комментариев"
+puts "Создано #{PostLike.count} лайков"

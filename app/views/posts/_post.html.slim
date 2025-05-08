@@ -5,7 +5,7 @@ div id=dom_id(post)
     .d-flex.justify-content-between.mt-5
       span = post.creator.email
       .d-flex.gap-2.align-items-center
-        span = t('posts.post.likes_count', count: post.post_likes.count)
+        span = t('posts.post.likes_count', count: post.likes_count)
         - if current_user
           - like = post.post_likes.find_by(user: current_user)
           - if like

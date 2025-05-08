@@ -11,11 +11,11 @@ class PostCommentsController < ApplicationController
     end
 
     respond_to do |format|
-      if @post_comment.save!
+      if @post_comment.save
         format.html { redirect_to @post, notice: t('.create.success') }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_to @post, notice: @post_comment.errors.full_messages.join(', ') }
+        format.html { redirect_to @post, alert: @post_comment.errors.full_messages.join(', ') }
         format.json { render json: @post_comment.errors, status: :unprocessable_entity }
       end
     end

@@ -9,6 +9,6 @@
   placeholder: local_assigns[:placeholder] || '',
   input_html: local_assigns[:input_html] || { class: input_class },
   wrapper_html: local_assigns[:wrapper_html] || { class: has_error ? 'form-group has-error' : 'form-group' },
-  label_html: local_assigns[:label_html] || { class: has_error ? 'form-label text-danger' : 'form-label' },
-  error_html: { class: 'invalid-feedback text-danger fw-bold' },
+  label_html: local_assigns[:label_html] || { class: 'form-label' },
+  error_html: { class: 'invalid-feedback text-danger' },
   error: has_error ? resource.errors[field_name].first : false
