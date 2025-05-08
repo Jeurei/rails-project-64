@@ -1,5 +1,6 @@
 - field_name = local_assigns[:field_name]
-- has_error = resource && resource.errors[field_name].any?
+- form_object = f.object
+- has_error = form_object && form_object.errors[field_name].any?
 - input_class = "form-control #{has_error ? 'is-invalid' : ''}"
 
 = f.input field_name,
@@ -11,4 +12,4 @@
   wrapper_html: local_assigns[:wrapper_html] || { class: has_error ? 'form-group has-error' : 'form-group' },
   label_html: local_assigns[:label_html] || { class: 'form-label' },
   error_html: { class: 'invalid-feedback text-danger' },
-  error: has_error ? resource.errors[field_name].first : false
+  error: has_error ? form_object.errors[field_name].first : false
