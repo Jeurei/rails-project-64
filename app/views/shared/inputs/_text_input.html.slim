@@ -1,7 +1,8 @@
-- field_name = local_assigns[:field_name]
-- form_object = f.object
-- has_error = form_object && form_object.errors[field_name].any?
-- input_class = "form-control #{has_error ? 'is-invalid' : ''}"
+ruby:
+  field_name = local_assigns[:field_name]
+  form_object = f.object
+  has_error = form_object && form_object.errors[field_name].any?
+  input_class = "form-control #{has_error ? 'is-invalid' : ''}"
 
 = f.input field_name,
   label: local_assigns[:label],
