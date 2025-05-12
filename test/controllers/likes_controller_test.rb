@@ -26,7 +26,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test 'should create like when user is signed in' do
     sign_in @user
 
-    assert_difference -> { Like.count }, 1 do
+    assert_difference 'Like.count', 1 do
       post post_likes_path(@post)
     end
 
@@ -40,7 +40,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     like = @post.likes.create!(user: @user)
 
-    assert_difference -> { Like.count }, -1 do
+    assert_difference 'Like.count', -1 do
       delete post_like_path(@post, like)
     end
 
