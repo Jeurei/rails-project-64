@@ -52,8 +52,11 @@ en:
     form:
       create_post: "Create post"
       title: "Title"
+      title_hint: "5 to 255 characters"
       category: "Category"
       body: "Content"
+      body_hint: "200 to 4000 characters"
+      error_message: "Failed to create post. Please check the entered data"
       errors:
         prohibited: "%{count} errors prohibited this post from being saved:"
   post_comment:
@@ -93,6 +96,31 @@ en:
     create:
       success: "Comment was successfully created."
       error: "Unable to create comment."
+  form:
+    required: "Required field"
+  activerecord:
+    attributes:
+      post_comment:
+        content: "Comment"
+      post:
+        title: "Title"
+        body: "Content"
+    errors:
+      models:
+        post_comment:
+          attributes:
+            content:
+              blank: "cannot be empty"
+        post:
+          attributes:
+            title:
+              blank: "cannot be blank"
+              too_short: "must be at least 5 characters"
+              too_long: "must be at most 255 characters"
+            body:
+              blank: "cannot be blank"
+              too_short: "must be at least 200 characters"
+              too_long: "must be at most 4000 characters"
   errors:
     messages:
       not_saved:

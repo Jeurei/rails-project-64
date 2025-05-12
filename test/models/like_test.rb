@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class PostLikeTest < ActiveSupport::TestCase
+class LikeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

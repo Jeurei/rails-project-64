@@ -3,14 +3,17 @@ ruby:
   form_object = f.object
   has_error = form_object && form_object.errors[field_name].any?
   input_class = "form-control #{has_error ? 'is-invalid' : ''}"
+  hint_key = "#{field_name}_hint"
+  hint_text = I18n.t("posts.form.#{hint_key}", default: local_assigns[:hint] || '')
 
 = f.input field_name,
-  label: local_assigns[:label],
-  autofocus: local_assigns[:autofocus] || false,
-  as: local_assigns[:as] || :string,
-  placeholder: local_assigns[:placeholder] || '',
-  input_html: local_assigns[:input_html] || { class: input_class },
-  wrapper_html: local_assigns[:wrapper_html] || { class: has_error ? 'form-group has-error' : 'form-group' },
-  label_html: local_assigns[:label_html] || { class: 'form-label' },
-  error_html: { class: 'invalid-feedback text-danger' },
-  error: has_error ? form_object.errors[field_name].first : false
+          label: local_assigns[:label],
+          autofocus: local_assigns[:autofocus] || false,
+          as: local_assigns[:as] || :string,
+          placeholder: local_assigns[:placeholder] || '',
+          input_html: local_assigns[:input_html] || { class: input_class, rows: 10 },
+          wrapper_html: local_assigns[:wrapper_html] || { class: has_error ? 'form-group has-error' : 'form-group' },
+          label_html: local_assigns[:label_html] || { class: 'form-label' },
+          error_html: { class: 'invalid-feedback text-danger' },
+          error: has_error ? form_object.errors[field_name].first : false,
+          hint: hint_text.presence

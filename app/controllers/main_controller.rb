@@ -2,6 +2,6 @@
 
 class MainController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.includes(:creator).order(created_at: :desc)
   end
 end

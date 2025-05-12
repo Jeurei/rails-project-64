@@ -16,6 +16,12 @@ ru:
       confirmed: "Ваша учетная запись успешно подтверждена."
       send_instructions: "Инструкции по подтверждению отправлены на ваш Email."
   activerecord:
+    attributes:
+      post_comment:
+        content: "Комментарий"
+      post:
+        title: "Заголовок"
+        body: "Текст"
     errors:
       models:
         user:
@@ -29,6 +35,20 @@ ru:
               invalid: "Неверный формат Email"
             password_confirmation:
               confirmation: "Пароли не совпадают"
+        post_comment:
+          attributes:
+            content:
+              blank: "не может быть пустым"
+        post:
+          attributes:
+            title:
+              blank: "не может быть пустым"
+              too_short: "должен содержать минимум 5 символов"
+              too_long: "должен содержать максимум 255 символов"
+            body:
+              blank: "не может быть пустым"
+              too_short: "должен содержать минимум 200 символов"
+              too_long: "должен содержать максимум 4000 символов"
   hello: "Привет, мир"
   posts:
     index:
@@ -44,8 +64,11 @@ ru:
     form:
       create_post: "Создать пост"
       title: "Заголовок"
+      title_hint: "от 5 до 255 символов"
       category: "Категория"
       body: "Текст"
+      body_hint: "от 200 до 4000 символов"
+      error_message: "Не удалось создать пост. Проверьте введенные данные"
       errors:
         prohibited: "%{count} ошибок не позволяет сохранить пост:"
     create:
@@ -78,6 +101,8 @@ ru:
       reply_form:
         submit: "Оставить комментарий"
         placeholder: "Напишите ваш ответ..."
+  form:
+    required: "Обязательное поле"
   errors:
     messages:
       not_saved:

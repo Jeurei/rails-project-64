@@ -5,7 +5,7 @@ require 'faker'
 Faker::Config.locale = 'ru'
 
 Rails.logger.debug 'Очистка базы данных...'
-PostLike.destroy_all
+Like.destroy_all
 PostComment.destroy_all
 Post.destroy_all
 Category.destroy_all
@@ -28,4 +28,4 @@ Rails.logger.debug { "Создано #{User.count} пользователей" }
 Rails.logger.debug { "Создано #{Category.count} категорий" }
 Rails.logger.debug { "Создано #{Post.count} постов" }
 Rails.logger.debug { "Создано #{PostComment.count} комментариев" }
-Rails.logger.debug { "Создано #{PostLike.count} лайков" }
+Rails.logger.debug { "Создано #{Like.count} лайков" }

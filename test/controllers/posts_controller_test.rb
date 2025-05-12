@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'faker'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -28,13 +29,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: {
         post: {
           title: 'Test Post',
-          body: 'Test Body',
+          body: Faker::Lorem.paragraph_by_chars(number: 256),
           category_id: @category.id
         }
       }
     end
 
-    assert_redirected_to "#{post_url(Post.last)}?locale=en"
+    assert_redirected_to "#{post_path(Post.last)}?locale=en"
     assert_equal 'Test Post', Post.last.title
     assert_equal @user, Post.last.creator
   end
@@ -48,11 +49,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     patch post_url(@post), params: {
       post: {
         title: 'Updated Title',
-        body: 'Updated Body',
+        body: Faker::Lorem.paragraph_by_chars(number: 256),
         category_id: @category.id
       }
     }
-    assert_redirected_to "#{post_url(@post)}?locale=en"
+    assert_redirected_to "#{post_path(@post)}?locale=en"
     @post.reload
     assert_equal 'Updated Title', @post.title
   end

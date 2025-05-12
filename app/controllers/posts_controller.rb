@@ -2,11 +2,11 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show update]
-  before_action :set_categories, only: %i[new]
+  before_action :set_categories, only: %i[new create]
   before_action :set_comments, only: %i[show]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:creator).order(created_at: :desc)
   end
 
   def show
@@ -25,6 +25,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: t('.success') }
         format.json { render :show, status: :created, location: @post }
       else
+        set_categories
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -37,6 +38,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: t('.success') }
         format.json { render :show, status: :ok, location: @post }
       else
+        set_categories
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
