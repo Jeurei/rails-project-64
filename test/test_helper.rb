@@ -22,6 +22,9 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
+    # Set fixture class for post_likes.yml
+    set_fixture_class post_likes: Like
+
     # Add more helper methods to be used by all tests here...
   end
 end
