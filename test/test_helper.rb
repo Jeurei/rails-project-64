@@ -4,6 +4,14 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
+# Monkey patch to add with_connection method to Proc class
+# This resolves issues with lambda expressions in tests
+class Proc
+  def with_connection
+    ActiveRecord::Base.connection_pool.with_connection { yield call }
+  end
+end unless Proc.method_defined?(:with_connection)
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
