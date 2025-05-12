@@ -1,17 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: 1
-  user: 1
+  post: 1  # post_one.id
+  user: 1  # user_one.id
 
 two:
-  post: 2
-  user: 2
+  post: 2  # post_two.id
+  user: 2  # user_two.id
 
 three:
-  post: 3
-  user: 1
+  post: 3  # post_with_comments.id
+  user: 1  # user_one.id
 
 four:
-  post: 5
-  user: 3
+  post: 5  # post_no_category.id
+  user: 3  # user_three.id
+
+other_user_like:
+  post: 1  # post_one.id
+  user: 2  # user_two.id (different from post owner)

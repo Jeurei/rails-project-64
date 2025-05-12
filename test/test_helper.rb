@@ -22,9 +22,17 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Set fixture class for post_likes.yml
+    # Set fixture class for post_likes.yml to use the Like model
     set_fixture_class post_likes: Like
+
+    # Explicit method to ensure likes are accessible through the expected method
+    def likes(fixture_name)
+      post_likes(fixture_name)
+    end
 
     # Add more helper methods to be used by all tests here...
   end
 end
+
+# Ensure fixture class mapping is properly loaded in ActionDispatch tests too
+ActionDispatch::IntegrationTest.set_fixture_class(post_likes: Like) if defined?(ActionDispatch::IntegrationTest)
