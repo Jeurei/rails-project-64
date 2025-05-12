@@ -1,23 +1,44 @@
 one:
-  content: first
-  user: one
-  post: one
-  ancestry: /
+  id: 1
+  content: "This is a fantastic overview of JavaScript."
+  user_id: 1
+  post_id: 3
+  ancestry:
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-with_comments:
-  content: this is comment with comments
-  user: one
-  post: one
-  ancestry: /
+two:
+  id: 2
+  content: "I particularly appreciated the section on modern features."
+  user_id: 2
+  post_id: 3
+  ancestry: "1"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-nested:
-  content: commented comment
-  user: one
-  post: one
-  ancestry: /<%= ActiveRecord::FixtureSet.identify(:with_comments) %>/
+three:
+  id: 3
+  content: "Would you consider adding a section about TypeScript?"
+  user_id: 3
+  post_id: 3
+  ancestry: "1/2"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
 
-deep_nested:
-  content: deep comment
-  user: one
-  post: one
-  ancestry: /<%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>/
+four:
+  id: 4
+  content: "Ruby on Rails continues to be relevant despite newer frameworks."
+  user_id: 1
+  post_id: 2
+  ancestry:
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+five:
+  id: 5
+  content: "I agree! Rails is still my go-to framework."
+  user_id: 3
+  post_id: 2
+  ancestry: "4"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>

@@ -7,8 +7,8 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:one)
-    @post = posts(:one)
-    @parent_comment = post_comments(:with_comments)
+    @post = posts(:three) # Using post three which has comments
+    @parent_comment = post_comments(:one)
     sign_in @user
   end
 
@@ -39,15 +39,15 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
 
     new_comment = PostComment.last
     assert { new_comment.parent == @parent_comment }
-    parent_id = ActiveRecord::FixtureSet.identify(:with_comments)
+    parent_id = @parent_comment.id
     expected_ancestry = "/#{parent_id}/"
-    assert { [expected_ancestry, parent_id.to_s].include?(new_comment.ancestry) }
+    assert { [expected_ancestry, parent_id.to_s, "/#{parent_id}/"].include?(new_comment.ancestry) }
 
     assert_redirected_to post_path(@post, locale: I18n.locale)
   end
 
   test 'should create a deeply nested comment' do
-    nested_comment = post_comments(:nested)
+    nested_comment = post_comments(:two)
 
     assert_difference('PostComment.count') do
       post post_comments_path(@post), params: {
@@ -61,8 +61,8 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     new_comment = PostComment.last
     assert { new_comment.parent == nested_comment }
 
-    parent_id = ActiveRecord::FixtureSet.identify(:with_comments)
-    nested_id = ActiveRecord::FixtureSet.identify(:nested)
+    parent_id = @parent_comment.id
+    nested_id = nested_comment.id
     expected_pattern = /#{parent_id}.*#{nested_id}/
 
     assert { new_comment.ancestry.match?(expected_pattern) }

@@ -1,11 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: Technology
+  id: 1
+  name: javascript
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
 two:
-  name: Science
+  id: 2
+  name: ruby
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+three:
+  id: 3
+  name: python
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+four:
+  id: 4
+  name: devops
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>

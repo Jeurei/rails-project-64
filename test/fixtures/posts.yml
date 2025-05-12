@@ -1,22 +1,49 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
 one:
-  title: First Post
-  body: This is the first post
-  category: one
-  creator: one
+  id: 1
+  title: "JavaScript: Essential Skills for Modern Web Development"
+  body: "JavaScript is one of the most important languages for web development. It provides interactivity and dynamic behavior on websites. This article covers the essential skills every JavaScript developer should have, including understanding the DOM, asynchronous programming, ES6 features, and popular frameworks like React, Vue, and Angular. We'll also discuss best practices for writing clean, maintainable JavaScript code, common pitfalls to avoid, and how to keep up with the rapidly evolving JavaScript ecosystem."
+  creator_id: 1
+  category_id: 1
+  likes_count: 3
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
-# column: value
-#
+
 two:
-  title: Second Post
-  body: This is the second post
-  category: two
-  creator: two
+  id: 2
+  title: "Ruby on Rails: Building Web Applications Quickly"
+  body: "Ruby on Rails is a powerful framework for web application development. It emphasizes convention over configuration and follows the Don't Repeat Yourself (DRY) principle. This article explores how Rails can help developers build robust web applications quickly and efficiently. We'll cover the MVC architecture, ActiveRecord, routing, and other key components of the Rails framework."
+  creator_id: 2
+  category_id: 2
+  likes_count: 2
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+three:
+  id: 3
+  title: "Full-Stack Development: Bridging Frontend and Backend"
+  body: "Full-stack development involves working with both frontend and backend technologies to build complete web applications. This comprehensive guide explores the skills needed to become a successful full-stack developer, including proficiency in HTML, CSS, JavaScript, as well as server-side languages and database management."
+  creator_id: 1
+  category_id: 2
+  likes_count: 5
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+four:
+  id: 4
+  title: "Introduction to Python: A Versatile Programming Language"
+  body: "Python is known for its readability and versatility, making it an excellent choice for beginners and experienced programmers alike. This article introduces Python's key features, syntax, and applications in various domains such as web development, data science, artificial intelligence, and automation."
+  creator_id: 2
+  category_id: 1
+  likes_count: 0
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+five:
+  id: 5
+  title: "Cloud Computing: Transforming Modern IT Infrastructure"
+  body: "Cloud computing has revolutionized how businesses deploy and manage IT infrastructure. This article examines the fundamental concepts of cloud computing, including service models (IaaS, PaaS, SaaS), deployment models (public, private, hybrid), and key providers like AWS, Microsoft Azure, and Google Cloud Platform."
+  creator_id: 3
+  category_id: null
+  likes_count: 1
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
