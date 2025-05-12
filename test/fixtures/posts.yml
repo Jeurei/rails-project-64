@@ -1,3 +1,5 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 one:
   id: 1
   title: "JavaScript: Essential Skills for Modern Web Development"
@@ -5,8 +7,6 @@ one:
   creator_id: 1
   category_id: 1
   likes_count: 3
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
 
 two:
   id: 2
@@ -15,8 +15,6 @@ two:
   creator_id: 2
   category_id: 2
   likes_count: 2
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
 
 three:
   id: 3
@@ -25,8 +23,6 @@ three:
   creator_id: 1
   category_id: 2
   likes_count: 5
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
 
 four:
   id: 4
@@ -35,8 +31,6 @@ four:
   creator_id: 2
   category_id: 1
   likes_count: 0
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
 
 five:
   id: 5
@@ -45,5 +39,3 @@ five:
   creator_id: 3
   category_id: null
   likes_count: 1
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>

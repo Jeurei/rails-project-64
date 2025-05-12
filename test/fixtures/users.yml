@@ -1,7 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 DEFAULTS: &DEFAULTS
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
 
 one:
   id: 1
