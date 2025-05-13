@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_250_512_185_400) do
+ActiveRecord::Schema[7.1].define(version: 20_250_513_153_921) do
   create_table 'categories', force: :cascade do |t|
     t.string 'name', null: false
     t.datetime 'created_at', null: false
@@ -33,13 +33,17 @@ ActiveRecord::Schema[7.1].define(version: 20_250_512_185_400) do
   end
 
   create_table 'post_likes', force: :cascade do |t|
-    t.integer 'user', null: false
-    t.integer 'post', null: false
+    t.integer 'user_id', null: false
+    t.integer 'post_id', null: false
     t.datetime 'created_at'
     t.datetime 'updated_at'
+    t.integer 'user'
+    t.integer 'post'
     t.index ['post'], name: 'index_post_likes_on_post'
-    t.index %w[user post], name: 'index_post_likes_on_user_and_post', unique: true
+    t.index ['post_id'], name: 'index_post_likes_on_post_id'
     t.index ['user'], name: 'index_post_likes_on_user'
+    t.index %w[user_id post_id], name: 'index_post_likes_on_user_id_and_post_id', unique: true
+    t.index ['user_id'], name: 'index_post_likes_on_user_id'
   end
 
   create_table 'posts', force: :cascade do |t|
@@ -68,8 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 20_250_512_185_400) do
 
   add_foreign_key 'post_comments', 'posts'
   add_foreign_key 'post_comments', 'users'
-  add_foreign_key 'post_likes', 'posts', column: 'post'
-  add_foreign_key 'post_likes', 'users', column: 'user'
+  add_foreign_key 'post_likes', 'posts'
+  add_foreign_key 'post_likes', 'users'
   add_foreign_key 'posts', 'categories'
   add_foreign_key 'posts', 'users', column: 'creator_id'
 end

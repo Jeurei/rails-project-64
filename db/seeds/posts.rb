@@ -2,7 +2,7 @@
 
 module SeedData
   def self.create_posts(categories, users)
-    Rails.logger.info 'Создание постов...'
+    Rails.logger.debug 'Создание постов...'
     posts = []
 
     30.times do

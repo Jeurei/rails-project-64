@@ -2,7 +2,7 @@
 
 module SeedData
   def self.create_users
-    Rails.logger.info 'Создание пользователей...'
+    Rails.logger.debug 'Создание пользователей...'
     admin = User.create!(
       email: 'admin@example.com',
       password: 'password',

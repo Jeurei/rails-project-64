@@ -1,20 +1,4 @@
 ru:
-  devise:
-    sessions:
-      signed_in: "Вход в систему выполнен успешно."
-      signed_out: "Выход из системы выполнен успешно."
-      already_signed_out: "Выход из системы уже выполнен."
-    registrations:
-      signed_up: "Регистрация выполнена успешно."
-      signed_up_but_unconfirmed: "Письмо с подтверждением отправлено на ваш Email."
-      updated: "Ваша учетная запись успешно обновлена."
-    passwords:
-      send_instructions: "Инструкции по восстановлению пароля отправлены на ваш Email."
-      updated: "Ваш пароль успешно изменен."
-      updated_not_active: "Ваш пароль успешно изменен."
-    confirmations:
-      confirmed: "Ваша учетная запись успешно подтверждена."
-      send_instructions: "Инструкции по подтверждению отправлены на ваш Email."
   activerecord:
     attributes:
       post_comment:

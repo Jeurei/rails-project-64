@@ -2,7 +2,7 @@
 
 module SeedData
   def self.create_likes(users, posts)
-    Rails.logger.info 'Создание лайков...'
+    Rails.logger.debug 'Создание лайков...'
     likes_combinations = []
 
     users.each do |user|

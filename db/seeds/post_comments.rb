@@ -2,7 +2,7 @@
 
 module SeedData
   def self.create_comments(users, posts)
-    Rails.logger.info 'Создание категорий...'
+    Rails.logger.debug 'Создание категорий...'
     comments = []
 
     50.times do
@@ -13,7 +13,7 @@ module SeedData
       )
     end
 
-    Rails.logger.info 'Создание вложенных комментариев...'
+    Rails.logger.debug 'Создание вложенных комментариев...'
     30.times do
       parent_comment = comments.sample
       PostComment.create!(
