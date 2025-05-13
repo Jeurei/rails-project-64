@@ -1,17 +1,5 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  id: 1
-  name: javascript
+  name: js
 
 two:
-  id: 2
   name: ruby
-
-three:
-  id: 3
-  name: python
-
-four:
-  id: 4
-  name: devops

@@ -1,36 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   id: 1
-  content: "This is a fantastic overview of JavaScript."
-  user_id: 1
-  post_id: 3
-  ancestry: 
+  user: one
+  post: with_comments
+  ancestry: /
+  content: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
-two:
+nested:
   id: 2
-  content: "I particularly appreciated the section on modern features."
-  user_id: 2
-  post_id: 3
-  ancestry: "1"
-
-three:
-  id: 3
-  content: "Would you consider adding a section about TypeScript?"
-  user_id: 3
-  post_id: 3
-  ancestry: "1/2"
-
-four:
-  id: 4
-  content: "Ruby on Rails continues to be relevant despite newer frameworks."
-  user_id: 1
-  post_id: 2
-  ancestry:
-
-five:
-  id: 5
-  content: "I agree! Rails is still my go-to framework."
-  user_id: 3
-  post_id: 2
-  ancestry: "4"
+  user: one
+  post: with_comments
+  ancestry: /1/
+  content: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.

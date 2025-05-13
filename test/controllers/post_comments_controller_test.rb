@@ -7,7 +7,7 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:one)
-    @post = posts(:three) # Using post three which has comments
+    @post = posts(:two)
     @parent_comment = post_comments(:one)
     sign_in @user
   end
@@ -47,7 +47,7 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create a deeply nested comment' do
-    nested_comment = post_comments(:two)
+    nested_comment = post_comments(:nested)
 
     assert_difference('PostComment.count') do
       post post_comments_path(@post), params: {
