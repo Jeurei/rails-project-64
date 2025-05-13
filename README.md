@@ -91,7 +91,7 @@ make lint-fix
 
 ## Technologies
 
-- Ruby on Rails 7.2
+- Ruby on Rails 7.1.3
 - Devise for authentication
 - Bootstrap 5 for UI
 - Turbo and Stimulus for frontend interactivity

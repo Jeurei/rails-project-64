@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ConsolidatedPostLikes < ActiveRecord::Migration[7.2]
+class ConsolidatedPostLikes < ActiveRecord::Migration[7.1]
   def change
     create_table :post_likes do |t|
       t.integer :user, null: false
