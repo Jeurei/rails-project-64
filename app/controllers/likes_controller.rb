@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   def create
     return unless user_signed_in?
 
-    @post.likes.find_or_create_by(user: current_user)
+    @post.likes.find_or_create_by(user: current_user.id)
     redirect_to @post
   end
 
