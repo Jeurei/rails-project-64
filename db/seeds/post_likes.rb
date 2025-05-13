@@ -12,7 +12,7 @@ module SeedData
         combo = [user.id, post.id]
         next if likes_combinations.include?(combo)
 
-        Like.create!(user: user, post: post)
+        PostLike.create!(user: user, post: post)
         likes_combinations << combo
       end
     end

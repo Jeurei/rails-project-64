@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   resources :posts, except: %i[edit destroy] do
     resources :comments, only: %i[create], controller: 'post_comments'
-    resources :likes, only: %i[create destroy]
+    resources :likes, only: %i[create destroy], controller: 'post_likes'
   end
   root to: 'main#index'
   devise_for :users, controllers: { sessions: 'users/sessions' }

@@ -2,17 +2,17 @@
 
 require 'test_helper'
 
-class LikesControllerTest < ActionDispatch::IntegrationTest
+class PostLikesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
     @user = users(:one)
     @post = posts(:one)
-    Like.destroy_all
+    PostLike.destroy_all
   end
 
   test 'should require authentication for create' do
-    assert_no_difference 'Like.count' do
+    assert_no_difference 'PostLike.count' do
       post post_likes_path(@post)
     end
     assert_redirected_to new_user_session_path
@@ -26,12 +26,12 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test 'should create like when user is signed in' do
     sign_in @user
 
-    assert_difference 'Like.count', 1 do
+    assert_difference 'PostLike.count', 1 do
       post post_likes_path(@post)
     end
 
-    assert_equal @user, Like.last.user
-    assert_equal @post, Like.last.post
+    assert_equal @user, PostLike.last.user
+    assert_equal @post, PostLike.last.post
     assert_redirected_to @post
   end
 
@@ -40,7 +40,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     like = @post.likes.create!(user: @user)
 
-    assert_difference 'Like.count', -1 do
+    assert_difference 'PostLike.count', -1 do
       delete post_like_path(@post, like)
     end
 
@@ -50,7 +50,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test 'should not error when trying to destroy a non-existent like' do
     sign_in @user
 
-    assert_no_difference 'Like.count' do
+    assert_no_difference 'PostLike.count' do
       delete post_like_path(@post, 999)
     end
 
@@ -63,18 +63,18 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     other_user = users(:two)
     like = @post.likes.create!(user: other_user)
 
-    assert_no_difference 'Like.count' do
+    assert_no_difference 'PostLike.count' do
       delete post_like_path(@post, like)
     end
 
-    assert Like.exists?(like.id)
+    assert PostLike.exists?(like.id)
     assert_redirected_to @post
   end
 
   test 'should handle non-existent post' do
     sign_in @user
 
-    assert_no_difference 'Like.count' do
+    assert_no_difference 'PostLike.count' do
       post post_likes_path(999)
     end
 
