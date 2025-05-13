@@ -9,7 +9,6 @@ class LikesController < ApplicationController
   def create
     return unless user_signed_in?
 
-    # Use the current_user object to ensure proper assignment
     @post.likes.find_or_create_by(user: current_user)
     redirect_to @post
   end
@@ -17,10 +16,7 @@ class LikesController < ApplicationController
   def destroy
     return unless user_signed_in?
 
-    # Check if the like belongs to the current user
-    if @like && @like.user_id == current_user.id
-      @like.destroy
-    end
+    @like&.destroy if @like&.user_id == current_user.id
     redirect_to @post
   end
 
@@ -35,8 +31,6 @@ class LikesController < ApplicationController
   end
 
   def set_like
-    # Try to find by ID first, then by user
-    @like = @post.likes.find_by(id: params[:id])
-    @set_like ||= @post.likes.find_by(user: current_user.id)
+    @like = @post.likes.find_by(id: params[:id]) || @post.likes.find_by(user: current_user.id)
   end
 end
