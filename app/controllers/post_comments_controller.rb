@@ -12,7 +12,7 @@ class PostCommentsController < ApplicationController
 
     respond_to do |format|
       if @post_comment.save
-        format.html { redirect_to @post, notice: t('.create.success') }
+        format.html { redirect_to @post, notice: t('.success') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { redirect_to @post, alert: @post_comment.errors.full_messages.join(', ') }

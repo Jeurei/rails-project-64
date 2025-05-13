@@ -3,8 +3,9 @@ p style="color: green" = notice
 ol.breadcrumb
   .breadcrumb-item
     = link_to t('.all_posts'), root_path
-  .breadcrumb-item.active
-    = @post.category.name
+  - if @post.category.present?
+    .breadcrumb-item.active
+      = @post.category.name
 
 = render @post
 
