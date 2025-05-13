@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-
-Faker::Config.locale = 'ru'
-
 Rails.logger.debug 'Очистка базы данных...'
 PostLike.destroy_all
 PostComment.destroy_all
@@ -20,6 +17,8 @@ categories = SeedData.create_categories
 
 if Rails.env.development?
   require 'faker'
+
+  Faker::Config.locale = 'ru'
 
   users = SeedData.create_users
   posts = SeedData.create_posts(categories, users)
