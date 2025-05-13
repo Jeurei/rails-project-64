@@ -16,7 +16,6 @@ class Like < ApplicationRecord
 
   def user=(value)
     self[:user] = value.is_a?(User) ? value.id : value
-
   end
 
   def post=(value)
