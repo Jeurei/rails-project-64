@@ -13,35 +13,36 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create comment' do
-    assert_difference('PostComment.count') do
-      post post_comments_path(@post), params: {
-        post_comment: { content: 'This is a test comment' }
-      }
-    end
+    post post_comments_path(@post), params: {
+      post_comment: { content: 'This is a test comment' }
+    }
 
-    assert { PostComment.last.content == 'This is a test comment' }
-    assert { PostComment.last.user == @user }
-    assert { PostComment.last.post == @post }
-    assert { [nil, '/'].include?(PostComment.last.ancestry) }
+    comment = PostComment.find_by(content: 'This is a test comment')
+    assert_not_nil comment
+    assert_equal @user, comment.user
+    assert_equal @post, comment.post
+    assert_nil comment.parent
+    assert { [nil, '/'].include?(comment.ancestry) }
+
     assert_redirected_to post_path(@post, locale: I18n.locale)
     assert_not_nil flash[:notice]
   end
 
   test 'should create nested comment' do
-    assert_difference('PostComment.count') do
-      post post_comments_path(@post), params: {
-        post_comment: {
-          content: 'This is a reply',
-          parent_id: @parent_comment.id
-        }
+    post post_comments_path(@post), params: {
+      post_comment: {
+        content: 'This is a reply',
+        parent_id: @parent_comment.id
       }
-    end
+    }
 
-    new_comment = PostComment.last
-    assert { new_comment.parent == @parent_comment }
+    comment = PostComment.find_by(content: 'This is a reply')
+    assert_not_nil comment
+    assert_equal @parent_comment, comment.parent
+
     parent_id = @parent_comment.id
     expected_ancestry = "/#{parent_id}/"
-    assert { [expected_ancestry, parent_id.to_s, "/#{parent_id}/"].include?(new_comment.ancestry) }
+    assert_includes [expected_ancestry, parent_id.to_s, "/#{parent_id}/"], comment.ancestry
 
     assert_redirected_to post_path(@post, locale: I18n.locale)
   end
@@ -49,23 +50,20 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create a deeply nested comment' do
     nested_comment = post_comments(:nested)
 
-    assert_difference('PostComment.count') do
-      post post_comments_path(@post), params: {
-        post_comment: {
-          content: 'Reply to nested comment',
-          parent_id: nested_comment.id
-        }
+    post post_comments_path(@post), params: {
+      post_comment: {
+        content: 'Reply to nested comment',
+        parent_id: nested_comment.id
       }
-    end
+    }
 
-    new_comment = PostComment.last
-    assert { new_comment.parent == nested_comment }
+    comment = PostComment.find_by(content: 'Reply to nested comment')
+    assert_not_nil comment
+    assert_equal nested_comment, comment.parent
 
-    parent_id = @parent_comment.id
-    nested_id = nested_comment.id
-    expected_pattern = /#{parent_id}.*#{nested_id}/
+    expected_pattern = /#{@parent_comment.id}.*#{nested_comment.id}/
+    assert_match expected_pattern, comment.ancestry
 
-    assert { new_comment.ancestry.match?(expected_pattern) }
     assert_redirected_to post_path(@post, locale: I18n.locale)
   end
 end

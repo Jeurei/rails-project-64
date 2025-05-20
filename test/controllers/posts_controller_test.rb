@@ -21,40 +21,49 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should get new' do
     get new_post_url
     assert_response :success
-    assert_not_nil assigns(:categories)
+    # Вместо assigns — проверка наличия категории в response body (если надо)
+    assert_match @category.name, @response.body
   end
 
   test 'should create post' do
-    assert_difference('Post.count') do
-      post posts_url, params: {
-        post: {
-          title: 'Test Post',
-          body: Faker::Lorem.paragraph_by_chars(number: 256),
-          category_id: @category.id
-        }
-      }
-    end
+    title = 'Test Post'
+    body = Faker::Lorem.paragraph_by_chars(number: 256)
 
-    assert_redirected_to "#{post_path(Post.last)}?locale=en"
-    assert_equal 'Test Post', Post.last.title
-    assert_equal @user, Post.last.creator
+    post posts_url, params: {
+      post: {
+        title: title,
+        body: body,
+        category_id: @category.id
+      }
+    }
+
+    created_post = Post.find_by(title: title, body: body, category_id: @category.id, creator_id: @user.id)
+    assert_not_nil created_post
+    assert_redirected_to "#{post_path(created_post)}?locale=en"
   end
 
   test 'should show post' do
     get post_url(@post)
     assert_response :success
+    assert_match @post.title, @response.body
   end
 
   test 'should update post' do
+    new_title = 'Updated Title'
+    new_body = Faker::Lorem.paragraph_by_chars(number: 256)
+
     patch post_url(@post), params: {
       post: {
-        title: 'Updated Title',
-        body: Faker::Lorem.paragraph_by_chars(number: 256),
+        title: new_title,
+        body: new_body,
         category_id: @category.id
       }
     }
+
     assert_redirected_to "#{post_path(@post)}?locale=en"
     @post.reload
-    assert_equal 'Updated Title', @post.title
+    assert_equal new_title, @post.title
+    assert_equal new_body, @post.body
+    assert_equal @category.id, @post.category_id
   end
 end

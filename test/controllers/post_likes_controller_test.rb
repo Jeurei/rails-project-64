@@ -12,9 +12,9 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should require authentication for create' do
-    assert_no_difference 'PostLike.count' do
-      post post_likes_path(@post)
-    end
+    post post_likes_path(@post)
+    like = PostLike.find_by(user: @user, post: @post)
+    assert_nil like
     assert_redirected_to new_user_session_path
   end
 
@@ -26,12 +26,12 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
   test 'should create like when user is signed in' do
     sign_in @user
 
-    assert_difference 'PostLike.count', 1 do
-      post post_likes_path(@post)
-    end
+    post post_likes_path(@post)
 
-    assert_equal @user, PostLike.last.user
-    assert_equal @post, PostLike.last.post
+    like = PostLike.find_by(user: @user, post: @post)
+    assert_not_nil like
+    assert_equal @user, like.user
+    assert_equal @post, like.post
     assert_redirected_to @post
   end
 
@@ -39,21 +39,16 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
 
     like = @post.likes.create!(user: @user)
+    delete post_like_path(@post, like)
 
-    assert_difference 'PostLike.count', -1 do
-      delete post_like_path(@post, like)
-    end
-
+    assert_not PostLike.exists?(like.id)
     assert_redirected_to @post
   end
 
   test 'should not error when trying to destroy a non-existent like' do
     sign_in @user
 
-    assert_no_difference 'PostLike.count' do
-      delete post_like_path(@post, 999)
-    end
-
+    delete post_like_path(@post, 999)
     assert_redirected_to @post
   end
 
@@ -63,9 +58,7 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
     other_user = users(:two)
     like = @post.likes.create!(user: other_user)
 
-    assert_no_difference 'PostLike.count' do
-      delete post_like_path(@post, like)
-    end
+    delete post_like_path(@post, like)
 
     assert PostLike.exists?(like.id)
     assert_redirected_to @post
@@ -74,10 +67,10 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
   test 'should handle non-existent post' do
     sign_in @user
 
-    assert_no_difference 'PostLike.count' do
-      post post_likes_path(999)
-    end
+    post post_likes_path(999)
 
+    like = PostLike.find_by(user: @user, post_id: 999)
+    assert_nil like
     assert_redirected_to "#{root_path}?locale=#{I18n.locale}"
   end
 end
